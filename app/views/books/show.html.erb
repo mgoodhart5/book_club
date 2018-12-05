@@ -4,3 +4,12 @@
 <% end %>
 Pages: <%= @book.pages %>  
 Published in: <%= @book.publishing_year %>
+
+<% @book.reviews.each do |review| %>
+  <div id="review-<%= review.id %>">
+    <%= review.title %>
+    Reviewed By: <%= review.user.name %>
+    Rating: <%= review.rating %>
+    Review: <%= review.review_text %>
+  </div>
+<% end %>

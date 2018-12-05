@@ -25,13 +25,13 @@ describe 'As a visitor to the book show page' do
     
     visit book_path(@book_1)
     
-    within "review-#{review_1.id}" do
+    within "#review-#{review_1.id}" do
       expect(page).to have_content(review_1.title)
       expect(page).to have_content("Reviewed By: #{review_1.user.name}")
       expect(page).to have_content("Rating: #{review_1.rating}")
       expect(page).to have_content("Review: #{review_1.review_text}")
     end
-    within "review-#{review_2.id}" do
+    within "#review-#{review_2.id}" do
       expect(page).to have_content(review_2.title)
       expect(page).to have_content("Reviewed By: #{review_2.user.name}")
       expect(page).to have_content("Rating: #{review_2.rating}")
