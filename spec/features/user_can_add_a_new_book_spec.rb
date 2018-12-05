@@ -5,6 +5,8 @@ describe 'as a visitor to the book index page' do
 
     visit books_path
 
+    click_link "Add New Book"
+
     expect(current_path).to eq(new_book_path)
   end
 end
