@@ -20,6 +20,8 @@ describe 'as a visitor to the app' do
     book_2 = Book.create(title: "book_2", pages: 2, publishing_year: 2002)
     author_1 = Author.create(name: "author_1")
     author_2 = Author.create(name: "author_2")
+    BookAuthor.create(book_id: book_1.id, author_id: author_1.id)
+    BookAuthor.create(book_id: book_2.id, author_id: author_2.id)
 
     visit '/books'
 
