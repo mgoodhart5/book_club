@@ -7,7 +7,7 @@ describe 'as a visitor to the app' do
   end
   it 'should show a list of the books' do
 
-    visit '/books'
+    visit books_path
 
     within "#book-#{@book_1.id}" do
       expect(page).to have_content(@book_1.title)
@@ -29,7 +29,7 @@ describe 'as a visitor to the app' do
     BookAuthor.create(book_id: @book_2.id, author_id: author_2.id)
     BookAuthor.create(book_id: @book_2.id, author_id: author_3.id)
 
-    visit '/books'
+    visit books_path
 
     within "#book-#{@book_1.id}" do
       expect(page).to have_content(author_1.name)
