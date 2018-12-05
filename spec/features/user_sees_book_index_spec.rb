@@ -23,10 +23,10 @@ describe 'as a visitor to the app' do
 
     visit '/books'
 
-    within("book-#{book_1.id}") do
+    within "#book-#{book_1.id}" do
       expect(page).to have_content(author_1.name)
     end
-    within("book-#{book_2.id}") do
+    within "#book-#{book_2.id}" do
       expect(page).to have_content(author_2.name)
     end
   end
