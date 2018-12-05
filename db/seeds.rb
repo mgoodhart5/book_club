@@ -31,6 +31,7 @@ sometimes_a_great_notion = Book.create(title: "Sometimes a Great Notion", pages:
 
 
 # Authors
+# golden_compass.authors.create(name: "Philip Pullman")
 philip_pullman = Author.create(name: "Philip Pullman")
 orson_card = Author.create(name: "Orson Scott Card")
 frank_herbert = Author.create(name: "Frank Herbert")
