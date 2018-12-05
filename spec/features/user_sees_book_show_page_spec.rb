@@ -6,7 +6,7 @@ describe 'As a visitor to the book show page' do
     book_2 = Book.create(title: "book_2", pages: 2, publishing_year: 2002)
     author_1 = book_1.authors.create(name: "Author 1")
     
-    visit book_path
+    visit book_path(book_1)
     
     expect(page).to have_content(book_1.title)
     expect(page).to have_content(book_1.pages)
