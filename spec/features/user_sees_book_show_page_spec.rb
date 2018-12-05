@@ -9,12 +9,12 @@ describe 'As a visitor to the book show page' do
     visit book_path(book_1)
     
     expect(page).to have_content(book_1.title)
-    expect(page).to have_content(book_1.pages)
-    expect(page).to have_content(book_1.publishing_year)
+    expect(page).to have_content("Pages: #{book_1.pages}")
+    expect(page).to have_content("Published in: #{book_1.publishing_year}")
     expect(page).to have_content(author_1.name)
     
     expect(page).to_not have_content(book_2.title)
-    expect(page).to_not have_content(book_2.pages)
+    expect(page).to_not have_content("Pages: #{book_2.pages}")
   end
   it 'should see a list of reviews for that book' do
     

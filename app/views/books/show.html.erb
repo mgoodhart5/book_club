@@ -1,0 +1,6 @@
+<%= @book.title %>
+<% @book.authors.each do |author| %>
+  <%= author.name %>
+<% end %>
+Pages: <%= @book.pages %>  
+Published in: <%= @book.publishing_year %>
