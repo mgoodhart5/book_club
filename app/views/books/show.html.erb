@@ -2,7 +2,7 @@
 <% @book.authors.each do |author| %>
   <p><%= author.name %></p>
 <% end %>
-Pages: <%= @book.pages %>
+Pages: <%= @book.pages %>  
 Published in: <%= @book.publishing_year %>
 
 <% @book.reviews.each do |review| %>
@@ -13,3 +13,5 @@ Published in: <%= @book.publishing_year %>
     Review: <%= review.review_text %>
   </div>
 <% end %>
+
+<%= link_to "Delete Book", book_path(@book), method: :delete %>
