@@ -14,4 +14,6 @@ Published in: <%= @book.publishing_year %>
   </div>
 <% end %>
 
+<%= link_to "New Review", new_book_review_path(@book) %>
+
 <%= link_to "Delete Book", book_path(@book), method: :delete %>
