@@ -13,8 +13,13 @@ class BooksController < ApplicationController
 
   def create
     author = Author.create(name: author_params[:authors].titlecase)
-    book = author.books.create(book_params)
-    redirect_to "/books/#{book.id}"
+    book = Book.new(book_params)
+    if book.save
+      author.books << book
+      redirect_to book_path(book.id)
+    else
+      redirect_to new_book_path
+    end
   end
 
   private

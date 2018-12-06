@@ -50,8 +50,8 @@ describe 'as a visitor to the book index page' do
     expect(page).to have_content(title_case_book_authors)
   end
   it 'should ensure book titles are unique in the system' do
-    book_1 = Book.create(title: "book_1", pages: 1, publishing_year: 2001)
-    book_title = "book_1"
+    Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
+    book_title = "Book 1"
     book_authors = "New Author"
     book_pages = 100
     book_publishing_year = 2000
