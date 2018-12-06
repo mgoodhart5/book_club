@@ -1,8 +1,8 @@
 <%= @book.title %>
 <% @book.authors.each do |author| %>
-  <%= author.name %>
+  <p><%= author.name %></p>
 <% end %>
-Pages: <%= @book.pages %>  
+Pages: <%= @book.pages %>
 Published in: <%= @book.publishing_year %>
 
 <% @book.reviews.each do |review| %>

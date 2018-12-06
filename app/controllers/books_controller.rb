@@ -12,15 +12,21 @@ class BooksController < ApplicationController
   end
 
   def create
-    new_author = Author.new(author_params)
-    if new_author.save
-      author = new_author
-    else
-      author = Author.find_by(name: author_params[:name])
+    whatever = author_params[:name].split(", ")
+    multiple_authors = []
+    whatever.each do |author|
+      new_author = Author.new(name: author)
+      if new_author.save
+        multiple_authors << new_author
+      else
+        multiple_authors << Author.find_by(name: author_params[:name])
+      end
     end
     book = Book.new(book_params)
     if book.save
-      author.books << book
+      multiple_authors.each do |author|
+        author.books << book
+      end
       redirect_to book_path(book.id)
     else
       redirect_to new_book_path
