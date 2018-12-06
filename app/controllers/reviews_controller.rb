@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
   
   def user_params
     initial_user_params = params.require(:review).permit(:user)
-    {name: initial_user_params[:user]}
+    { name: initial_user_params[:user].titlecase }
   end
   
   def review_params
