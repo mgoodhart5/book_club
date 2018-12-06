@@ -12,7 +12,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    author = Author.create(name: author_params[:authors].titlecase)
+    new_author = Author.new(author_params)
+    if new_author.save
+      author = new_author
+    else
+      author = Author.find_by(name: author_params[:name])
+    end
     book = Book.new(book_params)
     if book.save
       author.books << book
@@ -25,7 +30,8 @@ class BooksController < ApplicationController
   private
 
   def author_params
-    params.require(:book).permit(:authors)
+    initial_author_params = params.require(:book).permit(:authors)
+    {name: initial_author_params[:authors].titlecase}
   end
 
   def book_params

@@ -67,4 +67,23 @@ describe 'as a visitor to the book index page' do
 
     expect(current_path).to eq(new_book_path)
   end
+  it 'should ensure author names are unique in the system' do
+    author = Author.create(name: "New Author")
+    book_title = "Book 1"
+    book_authors = "New Author"
+    book_pages = 100
+    book_publishing_year = 2000
+
+    visit new_book_path
+
+    fill_in :book_title, with: book_title
+    fill_in :book_authors, with: book_authors
+    fill_in :book_pages, with: book_pages
+    fill_in :book_publishing_year, with: book_publishing_year
+
+    click_button "Create Book"
+
+    expect(current_path).to eq(book_path(Book.last.id))
+    expect(author.id).to eq(Author.last.id)
+  end
 end
