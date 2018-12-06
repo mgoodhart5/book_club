@@ -12,10 +12,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    whatever = author_params[:name].split(", ")
+    split_authors = author_params[:name].split(",")
     multiple_authors = []
-    whatever.each do |author|
-      new_author = Author.new(name: author)
+    split_authors.each do |author|
+      new_author = Author.new(name: author.strip)
       if new_author.save
         multiple_authors << new_author
       else
@@ -24,9 +24,7 @@ class BooksController < ApplicationController
     end
     book = Book.new(book_params)
     if book.save
-      multiple_authors.each do |author|
-        author.books << book
-      end
+      book.authors = multiple_authors
       redirect_to book_path(book.id)
     else
       redirect_to new_book_path
