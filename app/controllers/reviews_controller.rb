@@ -7,10 +7,12 @@ class ReviewsController < ApplicationController
   
   def create
     book = Book.find(params[:book_id])
-    user = User.create(user_params)
+    user = User.new(user_params)
+    unless user.save
+      user = User.find_by(name: user_params[:name])
+    end
     review = user.reviews.create(review_params)
     book.reviews << review
-    
     redirect_to book_path(book)
   end
   
