@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    author = Author.create(name: author_params[:authors])
+    author = Author.create(name: author_params[:authors].titlecase)
     book = author.books.create(book_params)
     redirect_to "/books/#{book.id}"
   end
@@ -24,6 +24,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :pages, :publishing_year)
+    initial_params = params.require(:book).permit(:title, :pages, :publishing_year)
+    {title: initial_params[:title].titlecase, pages: initial_params[:pages], publishing_year: initial_params[:publishing_year] }
   end
 end

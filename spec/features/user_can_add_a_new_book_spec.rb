@@ -28,10 +28,11 @@ describe 'as a visitor to the book index page' do
     expect(current_path).to eq(book_path(Book.last.id))
     expect(page).to have_content(book_title)
   end
-  it 'should ensure book titles are in title case' do
+  it 'should ensure book and author titles are in title case' do
     book_title = "new book"
     title_case_book_title = "New Book"
-    book_authors = "New Author"
+    book_authors = "new author"
+    title_case_book_authors = "New Author"
     book_pages = 100
     book_publishing_year = 2000
 
@@ -46,5 +47,6 @@ describe 'as a visitor to the book index page' do
 
     expect(current_path).to eq(book_path(Book.last.id))
     expect(page).to have_content(title_case_book_title)
+    expect(page).to have_content(title_case_book_authors)
   end
 end
