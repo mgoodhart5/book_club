@@ -49,4 +49,22 @@ describe 'as a visitor to the book index page' do
     expect(page).to have_content(title_case_book_title)
     expect(page).to have_content(title_case_book_authors)
   end
+  it 'should ensure book titles are unique in the system' do
+    book_1 = Book.create(title: "book_1", pages: 1, publishing_year: 2001)
+    book_title = "book_1"
+    book_authors = "New Author"
+    book_pages = 100
+    book_publishing_year = 2000
+
+    visit new_book_path
+
+    fill_in :book_title, with: book_title
+    fill_in :book_authors, with: book_authors
+    fill_in :book_pages, with: book_pages
+    fill_in :book_publishing_year, with: book_publishing_year
+
+    click_button "Create Book"
+
+    expect(current_path).to eq(new_book_path)
+  end
 end
