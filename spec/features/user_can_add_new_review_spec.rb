@@ -21,9 +21,9 @@ describe 'When a user visits a book show page' do
     visit new_book_review_path(book)
     
     fill_in :review_title, with: review_title
-    fill_in :review_username, with: user_name
+    fill_in :review_user, with: user_name
     fill_in :review_rating, with: rating
-    fill_in :review_text, with: review_text
+    fill_in :review_review_text, with: review_text
     click_button "Create Review"
     
     expect(current_path).to eq(book_path(book))
