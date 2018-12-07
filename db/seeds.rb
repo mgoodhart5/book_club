@@ -1,3 +1,9 @@
+require './app/models/book_author'
+require './app/models/book'
+require './app/models/author'
+require './app/models/review'
+require './app/models/user'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,7 +12,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+BookAuthor.destroy_all
+Book.destroy_all
+Author.destroy_all
+User.destroy_all
+Review.destroy_all
+
 # Books
+
 golden_compass = Book.create(title: "The Golden Compass", pages: 399, publishing_year: 1996)
 subtle_knife = Book.create(title: "The Subtle Knife", pages: 370, publishing_year: 1997)
 amber_spyglass = Book.create(title: "The Amber Spyglass", pages: 467, publishing_year: 2000)
@@ -81,16 +94,16 @@ BookAuthor.create(book_id: casa_de_los_espiritus.id, author_id: isabel_allende.i
 BookAuthor.create(book_id: sometimes_a_great_notion.id, author_id: ken_kesey.id)
 
 #users
-alyssa = User.create("Alyssa")
-katie = User.create("Katie")
-cyrus = User.create("Cyrus")
-josh = User.create("Josh")
-jes = User.create("Jes")
-justin = User.create("Justin")
-steph = User.create("Steph")
-ruth = User.create("Ruth")
-anna = User.create("Anna")
-maggie = User.create("Maggie")
+alyssa = User.create(name: "Alyssa")
+katie = User.create(name: "Katie")
+cyrus = User.create(name: "Cyrus")
+josh = User.create(name: "Josh")
+jes = User.create(name: "Jes")
+justin = User.create(name: "Justin")
+steph = User.create(name: "Steph")
+ruth = User.create(name: "Ruth")
+anna = User.create(name: "Anna")
+maggie = User.create(name: "Maggie")
 
 #user reviews
 alyssa.reviews.create(title: "Book Review 1", rating: 3, review_text: "Hard to read in another language, but I liked it!", book: casa_de_los_espiritus)
