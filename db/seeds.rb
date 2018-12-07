@@ -1,7 +1,7 @@
 require './app/models/book_author'
+require './app/models/review'
 require './app/models/book'
 require './app/models/author'
-require './app/models/review'
 require './app/models/user'
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -13,10 +13,10 @@ require './app/models/user'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 BookAuthor.destroy_all
-Book.destroy_all
-Author.destroy_all
-User.destroy_all
 Review.destroy_all
+User.destroy_all
+Author.destroy_all
+Book.destroy_all
 
 # Books
 
