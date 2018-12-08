@@ -1,8 +1,18 @@
-<h1><%= @author.name %></h1>
+<header>
+  <h1><%= @author.name %></h1>
+</header>
+<nav>
+  <p>Navigation</p>
+</nav>
 <% @author.books.each do |book| %>
   <div id="book-<%= book.id %>">
-    <%= book.title %>
-    Pages: <%= book.pages %>
-    Published in: <%= book.publishing_year %>
+    <h2><%= book.title %></h2>
+    <% book.authors.each do |author| %>
+      <% unless author == @author %>
+        <h3><%= author.name %></h3>
+      <% end %>
+    <% end %>
+    <p>Pages: <%= book.pages %></p>
+    <p>Published in: <%= book.publishing_year %></p>
   </div>
 <% end %>

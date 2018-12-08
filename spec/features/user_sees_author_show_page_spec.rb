@@ -1,11 +1,3 @@
-# As a Visitor,
-# When I visit an author's show page
-# I see all book titles by that author
-# Each book should show its year of publication
-# Each book should show its number of pages
-# Each book should show a list of any other authors
-# (exclude this show page's author from that list)
-
 require 'rails_helper'
 
 describe 'When a user visits an author show page' do
