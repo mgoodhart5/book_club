@@ -29,10 +29,11 @@ describe 'when a user clicks on a users name for any book review' do
     within "#review-#{review.id}" do
       click_link "Delete Review"
     end
-    
+
     expect(current_path).to eq(user_path(user))
     expect(page).to_not have_content(review.title)
     expect(page).to have_content(review_2.title)
     expect(page).to have_content(review_3.title)
+    save_and_open_page
   end
 end
