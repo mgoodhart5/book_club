@@ -34,6 +34,5 @@ describe 'when a user clicks on a users name for any book review' do
     expect(page).to_not have_content(review.title)
     expect(page).to have_content(review_2.title)
     expect(page).to have_content(review_3.title)
-    save_and_open_page
   end
 end
