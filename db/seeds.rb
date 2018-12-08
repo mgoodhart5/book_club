@@ -1,7 +1,7 @@
 require './app/models/book_author'
+require './app/models/review'
 require './app/models/book'
 require './app/models/author'
-require './app/models/review'
 require './app/models/user'
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -13,10 +13,10 @@ require './app/models/user'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 BookAuthor.destroy_all
-Book.destroy_all
-Author.destroy_all
-User.destroy_all
 Review.destroy_all
+User.destroy_all
+Author.destroy_all
+Book.destroy_all
 
 # Books
 
@@ -57,7 +57,6 @@ alafair_burke = Author.create(name: "Alafair Burke")
 haruki_murakami = Author.create(name: "Haruki Murakami")
 barbara_kingsolver = Author.create(name: "Barbara Kingsolver")
 patrick_rothfuss = Author.create(name: "Patrick Rothfuss")
-neil_gaiman = Author.create(name: "Neil Gaiman")
 anne_mccaffrey = Author.create(name: "Anne McCaffrey")
 elizabeth_scarborough = Author.create(name: "Elizabeth Ann Scarborough")
 isabel_allende = Author.create(name: "Isabel Allende")
