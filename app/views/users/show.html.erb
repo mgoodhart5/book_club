@@ -1,0 +1,19 @@
+<header>
+  <h1>Reviews</h1>
+</header>
+<nav>
+  <p>Navigation</p>
+</nav>
+<div class="user-name">
+  <h2><%= @user.name %></h2>
+</div>
+<div class="user-section">
+  <% @user.reviews.each do |review| %>
+    <div class="single-review-section">
+      <p><%= review.book.title %></p>
+      <h3><%= review.title %></h3>
+      <p><%= review.rating %> Stars</p>
+      <p><%= review.review_text %></p>
+    </div>
+  <% end %>
+</div>

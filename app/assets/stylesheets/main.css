@@ -73,6 +73,25 @@ nav {
   padding: 20px;
 }
 
+.user-name h2 {
+  font-size: 30px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #4e4d5c;
+}
+
+.user-section {
+  border: 1px #87bcde;
+  margin: 20px;
+}
+
+.single-review-section {
+  border: 1px solid #87bcde;
+  margin: 20px;
+  padding: 10px;
+}
+
 footer {
   background: #87bcde;
   height: 20px;
