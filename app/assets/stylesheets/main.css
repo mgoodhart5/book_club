@@ -1,0 +1,50 @@
+body {
+  background: #2d4654;
+  color: #d3d3d3;
+  font-family: 'Noto Serif SC', serif;
+}
+
+header {
+  background: #805e73;
+  height: 100px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+nav {
+  background: #243b4a;
+  height: 40px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.statistics {
+  background: #4e4d5c;
+  height: 50px;
+  padding: 20px;
+  margin-bottom: 80px;
+
+}
+
+.books h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.book-section {
+  background: #243b4a;
+  border: 1px solid #87bcde;
+  padding: 20px;
+  margin: 20px;
+}
+
+footer {
+  background: #87bcde;
+  height: 30px;
+  padding: 20px;
+}
