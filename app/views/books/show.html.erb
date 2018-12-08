@@ -15,7 +15,7 @@
     <% @book.reviews.each do |review| %>
       <div class="review-section" id="review-<%= review.id %>">
         <h3><%= review.title %></h3>
-        <p>Reviewed By: <%= review.user.name %></p>
+        <p>Reviewed By: <%= link_to review.user.name, user_path(review.user) %></p>
         <p>Rating: <%= review.rating %></p>
         <p>Review: <%= review.review_text %></p>
       </div>
