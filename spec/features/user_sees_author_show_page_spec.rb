@@ -28,4 +28,19 @@ describe 'When a user visits an author show page' do
       expect(page). to have_content("Published in: #{book_2.publishing_year}")
     end
   end
+  it 'should see a list of other authors of a book' do
+    author_1 = Author.create(name: "Author One")
+    author_2 = Author.create(name: "Author Two")
+    author_3 = Author.create(name: "Author Three")
+    
+    book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001, authors: [author_1, author_2, author_3])
+    
+    visit author_path(author_1)
+    
+    within "#book-#{book.id}" do
+      expect(page).to have_content(author_2.name)
+      expect(page).to have_content(author_3.name)
+      expect(page).to_not have_content(author_1.name)
+    end
+  end
 end
