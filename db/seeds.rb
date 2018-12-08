@@ -20,6 +20,8 @@ Book.destroy_all
 
 # Books
 
+# golden_compass = Book.create(title: "The Golden Compass", pages: 399, publishing_year: 1996, image_link: "blahblah")
+
 golden_compass = Book.create(title: "The Golden Compass", pages: 399, publishing_year: 1996)
 subtle_knife = Book.create(title: "The Subtle Knife", pages: 370, publishing_year: 1997)
 amber_spyglass = Book.create(title: "The Amber Spyglass", pages: 467, publishing_year: 2000)
@@ -44,7 +46,7 @@ sometimes_a_great_notion = Book.create(title: "Sometimes a Great Notion", pages:
 
 
 # Authors
-# golden_compass.authors.create(name: "Philip Pullman")
+# golden_compass.authors.create(name: "Philip Pullman", image_link: "blahablh")
 philip_pullman = Author.create(name: "Philip Pullman")
 orson_card = Author.create(name: "Orson Scott Card")
 frank_herbert = Author.create(name: "Frank Herbert")
