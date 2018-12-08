@@ -10,9 +10,18 @@ header {
   padding: 20px;
 }
 
+p {
+  padding: 5px;
+}
+
 h1 {
   font-size: 36px;
   font-weight: bold;
+}
+
+h3 {
+  font-size: 20px;
+  padding: 10px;
 }
 
 nav {
@@ -43,8 +52,23 @@ nav {
   margin: 20px;
 }
 
+.book-section h2 {
+  font-size: 24px;
+}
+
+.reviews {
+  border: 1px solid #4e4d5c;
+  margin: 30px;
+}
+
+.review-section {
+  background: #805e73;
+  border: 1px solid #87bcde;
+  margin: 10px;
+}
+
 footer {
   background: #87bcde;
-  height: 30px;
+  height: 20px;
   padding: 20px;
 }
