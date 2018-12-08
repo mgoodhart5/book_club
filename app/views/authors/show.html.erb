@@ -1,0 +1,8 @@
+<h1><%= @author.name %></h1>
+<% @author.books.each do |book| %>
+  <div id="book-<%= book.id %>">
+    <%= book.title %>
+    Pages: <%= book.pages %>
+    Published in: <%= book.publishing_year %>
+  </div>
+<% end %>
