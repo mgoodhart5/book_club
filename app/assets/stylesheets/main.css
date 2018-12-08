@@ -67,6 +67,12 @@ nav {
   margin: 10px;
 }
 
+.new-book {
+  margin: 20px;
+  background: #4e4d5c;
+  padding: 20px;
+}
+
 footer {
   background: #87bcde;
   height: 20px;
