@@ -4,15 +4,20 @@
 <nav>
   <p>Navigation</p>
 </nav>
-<% @author.books.each do |book| %>
-  <div id="book-<%= book.id %>">
-    <h2><%= book.title %></h2>
-    <% book.authors.each do |author| %>
-      <% unless author == @author %>
-        <h3><%= author.name %></h3>
+<div class="books">
+  <% @author.books.each do |book| %>
+    <div class="book-section" id="book-<%= book.id %>">
+      <h2><%= book.title %></h2>
+      <% if book.authors.count > 1 %>
+        <p>Other Authors:</p>
       <% end %>
-    <% end %>
-    <p>Pages: <%= book.pages %></p>
-    <p>Published in: <%= book.publishing_year %></p>
-  </div>
-<% end %>
+      <% book.authors.each do |author| %>
+        <% unless author == @author %>
+          <h3><%= author.name %></h3>
+        <% end %>
+      <% end %>
+      <p>Pages: <%= book.pages %></p>
+      <p>Published in: <%= book.publishing_year %></p>
+    </div>
+  <% end %>
+</div>
