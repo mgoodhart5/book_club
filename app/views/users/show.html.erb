@@ -9,11 +9,12 @@
 </div>
 <div class="user-section">
   <% @user.reviews.each do |review| %>
-    <div class="single-review-section">
+    <div id="review-<%= review.id %>" class="single-review-section">
       <p><%= review.book.title %></p>
       <h3><%= review.title %></h3>
       <p><%= review.rating %> Stars</p>
       <p><%= review.review_text %></p>
+      <%= link_to "Delete Review", review_path(review), method: :delete %>
     </div>
   <% end %>
 </div>
