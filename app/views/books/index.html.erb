@@ -12,7 +12,7 @@
     <div class="book-section" id="book-<%= book.id %>">
       <h2><%= book.title %></h2>
         <% book.authors.each do |author| %>
-          <h3><%= author.name %></h3>
+          <h3><%= link_to author.name, author_path(author) %></h3>
         <% end %>
       <p>Pages: <%= book.pages %></p>
       <p>Published in: <%= book.publishing_year %></p>

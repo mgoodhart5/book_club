@@ -8,23 +8,23 @@ describe 'As a visitor to the book show page' do
   end
   it 'should show the book title, authors, and number of pages' do
     visit book_path(@book_1)
-    
+
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content("Pages: #{@book_1.pages}")
     expect(page).to have_content("Published in: #{@book_1.publishing_year}")
     expect(page).to have_content(@author_1.name)
-    
+
     expect(page).to_not have_content(@book_2.title)
     expect(page).to_not have_content("Pages: #{@book_2.pages}")
   end
   it 'should see a list of reviews for that book' do
     user_1 = User.create(name: "User 1")
-    review_1 = user_1.reviews.create(title: "Review 1", rating: 4, review_text: "It was pretty good.", book: @book_1) 
+    review_1 = user_1.reviews.create(title: "Review 1", rating: 4, review_text: "It was pretty good.", book: @book_1)
     user_2 = User.create(name: "User 2")
-    review_2 = user_2.reviews.create(title: "Review 2", rating: 3, review_text: "It was pretty ok.", book: @book_1) 
-    
+    review_2 = user_2.reviews.create(title: "Review 2", rating: 3, review_text: "It was pretty ok.", book: @book_1)
+
     visit book_path(@book_1)
-    
+
     within "#review-#{review_1.id}" do
       expect(page).to have_content(review_1.title)
       expect(page).to have_content("Reviewed By: #{review_1.user.name}")
@@ -37,5 +37,13 @@ describe 'As a visitor to the book show page' do
       expect(page).to have_content("Rating: #{review_2.rating}")
       expect(page).to have_content("Review: #{review_2.review_text}")
     end
+  end
+  it 'should be able to click on any authors name to see its show page' do
+    visit book_path(@book_1)
+
+    click_link("#{@author_1.name}")
+
+    expect(current_path).to eq(author_path(@author_1))
+    expect(page).to have_content(@book_1.title)
   end
 end

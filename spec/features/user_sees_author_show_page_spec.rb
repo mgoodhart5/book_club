@@ -5,9 +5,9 @@ describe 'When a user visits an author show page' do
     author = Author.create(name: "Author One")
     book_1 = author.books.create(title: "Book 1", pages: 1, publishing_year: 2001)
     book_2 = author.books.create(title: "Book 2", pages: 2, publishing_year: 2002)
-    
+
     visit author_path(author)
-    
+
     expect(page).to have_content(author.name)
     within "#book-#{book_1.id}" do
       expect(page).to have_content(book_1.title)
@@ -24,15 +24,27 @@ describe 'When a user visits an author show page' do
     author_1 = Author.create(name: "Author One")
     author_2 = Author.create(name: "Author Two")
     author_3 = Author.create(name: "Author Three")
-    
+
     book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001, authors: [author_1, author_2, author_3])
-    
+
     visit author_path(author_1)
-    
+
     within "#book-#{book.id}" do
       expect(page).to have_content(author_2.name)
       expect(page).to have_content(author_3.name)
       expect(page).to_not have_content(author_1.name)
     end
+  end
+  it 'should be able to click on the other authors name to see its show page' do
+    book_1 = Book.create(title: "book_1", pages: 1, publishing_year: 2001)
+    author_1 = book_1.authors.create(name: "Author 1")
+    author_2 = book_1.authors.create(name: "Author 2")
+
+    visit author_path(author_1)
+
+    click_link("#{author_2.name}")
+
+    expect(current_path).to eq(author_path(author_2))
+    expect(page).to have_content(book_1.title)
   end
 end

@@ -39,4 +39,18 @@ describe 'as a visitor to the app' do
       expect(page).to have_content(author_3.name)
     end
   end
+
+  it 'should be able to click on any authors name to see its show page' do
+    author_1 = Author.create(name: "author 1")
+    BookAuthor.create(book_id: @book_1.id, author_id: author_1.id)
+
+    visit books_path
+
+    within "#book-#{@book_1.id}" do
+      click_link("#{author_1.name}")
+    end
+
+    expect(current_path).to eq(author_path(author_1))
+    expect(page).to have_content(@book_1.title)
+  end
 end
