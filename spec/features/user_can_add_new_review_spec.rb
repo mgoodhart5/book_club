@@ -15,14 +15,14 @@ describe 'When a user visits a book show page' do
     book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
     review_title = "Enjoyed it"
     user_name = "Me"
-    # rating = 5
+    rating = 5
     review_text = "Fabulous book loved every minute"
 
     visit new_book_review_path(book)
 
     fill_in :review_title, with: review_title
     fill_in :review_user, with: user_name
-    select('5', :from => 'rating')
+    select("#{rating}", :from => 'review_rating')
     fill_in :review_review_text, with: review_text
     click_button "Create Review"
 
@@ -32,7 +32,7 @@ describe 'When a user visits a book show page' do
     within "#review-#{Review.last.id}" do
       expect(page).to have_content(user_name)
       expect(page).to have_content(review_text)
-      expect(page).to have_select('my-select', selected: 'Option 2')
+      expect(page).to have_content("Rating: #{rating}")
       expect(page).to have_content(review_title)
     end
   end
@@ -42,14 +42,14 @@ describe 'When a user visits a book show page' do
     review_title = "Enjoyed it"
     user_name = "me too"
     user_name_titlecase = "Me Too"
-    rating = 5
     review_text = "Fabulous book loved every minute"
+    rating = '3'
 
     visit new_book_review_path(book)
 
     fill_in :review_title, with: review_title
     fill_in :review_user, with: user_name
-    fill_in :review_rating, with: rating
+    select("#{rating}", :from => 'review_rating')
     fill_in :review_review_text, with: review_text
     click_button "Create Review"
 
@@ -59,7 +59,7 @@ describe 'When a user visits a book show page' do
     within "#review-#{Review.last.id}" do
       expect(page).to have_content(user_name_titlecase)
       expect(page).to have_content(review_text)
-      expect(page).to have_content(rating)
+      expect(page).to have_content("Rating: #{rating}")
       expect(page).to have_content(review_title)
     end
   end
@@ -69,14 +69,14 @@ describe 'When a user visits a book show page' do
     user = User.create(name: "Me Too")
     review_title = "Enjoyed it"
     user_name = "Me Too"
-    rating = 5
+    rating = 2
     review_text = "Fabulous book loved every minute"
 
     visit new_book_review_path(book)
 
     fill_in :review_title, with: review_title
     fill_in :review_user, with: user_name
-    fill_in :review_rating, with: rating
+    select("#{rating}", :from => 'review_rating')
     fill_in :review_review_text, with: review_text
     click_button "Create Review"
 
@@ -86,25 +86,8 @@ describe 'When a user visits a book show page' do
     within "#review-#{Review.last.id}" do
       expect(page).to have_content(user_name)
       expect(page).to have_content(review_text)
-      expect(page).to have_content(rating)
+      expect(page).to have_content("Rating: #{rating}")
       expect(page).to have_content(review_title)
     end
-  end
-  it 'cannot rate higher than 5' do
-    book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
-    review_title = "Enjoyed it"
-    user_name = "Me"
-    rating = 7
-    review_text = "Fabulous book loved every minute"
-
-    visit new_book_review_path(book)
-
-    fill_in :review_title, with: review_title
-    fill_in :review_user, with: user_name
-    fill_in :review_rating, with: rating
-    fill_in :review_review_text, with: review_text
-    click_button "Create Review"
-
-    expect(current_path).to eq(new_book_review_path(book))
   end
 end
