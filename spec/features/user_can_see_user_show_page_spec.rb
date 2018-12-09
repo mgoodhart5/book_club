@@ -35,4 +35,16 @@ describe 'when a user clicks on a users name for any book review' do
     expect(page).to have_content(review_2.title)
     expect(page).to have_content(review_3.title)
   end
+  it 'should have book titles be links to the book show page' do
+    user = User.create(name: "Steve")
+    book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
+    review = Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: book)
+    
+    visit user_path(user)
+    
+    click_link(book.title)
+    
+    expect(current_path).to eq(book_path(book))
+    expect(page).to have_content(book.title)
+  end
 end
