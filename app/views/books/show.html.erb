@@ -6,7 +6,7 @@
 </nav>
 <div class="book-section">
   <% @book.authors.each do |author| %>
-    <h2><%= link_to author.name, author_path(author) %></h2>
+    <h2><%= link_to author.name, author_path(author), class: "link-text" %></h2>
   <% end %>
   <p>Pages: <%= @book.pages %></p>
   <p>Published in: <%= @book.publishing_year %></p>
@@ -15,7 +15,7 @@
     <% @book.reviews.each do |review| %>
       <div class="review-section" id="review-<%= review.id %>">
         <h3><%= review.title %></h3>
-        <p>Reviewed By: <%= link_to review.user.name, user_path(review.user) %></p>
+        <p>Reviewed By: <%= link_to review.user.name, user_path(review.user), class: "link-text" %></p>
         <p>Rating: <%= review.rating %></p>
         <p>Review: <%= review.review_text %></p>
       </div>
