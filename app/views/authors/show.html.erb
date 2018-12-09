@@ -7,7 +7,7 @@
 <div class="books">
   <% @author.books.each do |book| %>
     <div class="book-section" id="book-<%= book.id %>">
-      <h2><%= book.title %></h2>
+      <h2><%= link_to book.title, book_path(book) %></h2>
       <% if book.authors.count > 1 %>
         <p>Other Authors:</p>
       <% end %>

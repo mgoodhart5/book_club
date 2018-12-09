@@ -49,8 +49,14 @@ describe 'as a visitor to the app' do
     within "#book-#{@book_1.id}" do
       click_link("#{author_1.name}")
     end
-
     expect(current_path).to eq(author_path(author_1))
+  end
+  it  'should have all book titles be links to the book show page' do
+    visit books_path
+    
+    click_link(@book_1.title)
+    
+    expect(current_path).to eq(book_path(@book_1))
     expect(page).to have_content(@book_1.title)
   end
 end
