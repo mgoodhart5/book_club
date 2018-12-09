@@ -14,8 +14,8 @@ p {
   padding: 5px;
 }
 
-.link-text  {
-  color: #d3d3d3 !important;
+a {
+  color: #d3d3d3;
 }
 
 h1 {
@@ -60,7 +60,7 @@ nav {
 .book-info {
   display: inline-block;
 }
-  
+
 .book-section h2 {
   font-size: 24px;
 }
@@ -105,9 +105,17 @@ nav {
   padding: 10px;
 }
 
-
 .img-thumbnail {
   height: 160px;
+}
+
+.book-image {
+  height: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 575px;
+  margin-right: 20px;
+
 }
 .new-review {
   margin: 20px;
