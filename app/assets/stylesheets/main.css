@@ -53,6 +53,10 @@ nav {
   margin: 20px;
 }
 
+.book-info {
+  display: inline-block;
+}
+  
 .book-section h2 {
   font-size: 24px;
 }
@@ -91,6 +95,10 @@ nav {
   border: 1px solid #87bcde;
   margin: 20px;
   padding: 10px;
+}
+
+.img-thumbnail {
+  height: 160px;
 }
 
 footer {
