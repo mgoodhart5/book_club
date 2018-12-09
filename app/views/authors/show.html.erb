@@ -13,7 +13,7 @@
       <% end %>
       <% book.authors.each do |author| %>
         <% unless author == @author %>
-          <h3><%= author.name %></h3>
+          <h3><%= link_to author.name, author_path(author) %></h3>
         <% end %>
       <% end %>
       <p>Pages: <%= book.pages %></p>
