@@ -7,13 +7,12 @@
 <div class="book-section">
   <img src="<%= @book.image_link %>" alt="Cover of <%= @book.title %>"/>
   <div class="book-info">
-    
-  <% @book.authors.each do |author| %>
-    <h2><%= link_to author.name, author_path(author) %></h2>
-  <% end %>
-  <p>Pages: <%= @book.pages %></p>
-  <p>Published in: <%= @book.publishing_year %></p>
-  <div class="reviews">
+    <% @book.authors.each do |author| %>
+      <h2><%= link_to author.name, author_path(author), class: "link-text" %></h2>
+    <% end %>
+    <p>Pages: <%= @book.pages %></p>
+    <p>Published in: <%= @book.publishing_year %></p>
+    <div class="reviews">
       <h3>Reviews</h3>
       <% @book.reviews.each do |review| %>
         <div class="review-section" id="review-<%= review.id %>">

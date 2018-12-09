@@ -7,13 +7,13 @@
 <div class="books">
   <% @author.books.each do |book| %>
     <div class="book-section" id="book-<%= book.id %>">
-      <h2><%= link_to book.title, book_path(book) %></h2>
+      <h2><%= link_to book.title, book_path(book), class: "link-text" %></h2>
       <% if book.authors.count > 1 %>
         <p>Other Authors:</p>
       <% end %>
       <% book.authors.each do |author| %>
         <% unless author == @author %>
-          <h3><%= link_to author.name, author_path(author) %></h3>
+          <h3><%= link_to author.name, author_path(author), class: "link-text" %></h3>
         <% end %>
       <% end %>
       <p>Pages: <%= book.pages %></p>

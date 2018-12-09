@@ -14,6 +14,10 @@ p {
   padding: 5px;
 }
 
+.link-text  {
+  color: #d3d3d3 !important;
+}
+
 h1 {
   font-size: 36px;
   font-weight: bold;
@@ -37,8 +41,8 @@ nav {
   height: 50px;
   padding: 20px;
   margin-bottom: 80px;
-
 }
+
 
 .books h2 {
   font-size: 30px;
@@ -101,8 +105,14 @@ nav {
   padding: 10px;
 }
 
+
 .img-thumbnail {
   height: 160px;
+}
+.new-review {
+  margin: 20px;
+  background: #4e4d5c;
+  padding: 20px;
 }
 
 footer {
