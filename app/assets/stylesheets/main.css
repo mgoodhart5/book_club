@@ -61,6 +61,10 @@ nav {
   font-size: 24px;
 }
 
+.book-show-page {
+  display: inline-block;
+}
+
 .reviews {
   border: 1px solid #4e4d5c;
   margin: 30px;
