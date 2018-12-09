@@ -1,11 +1,19 @@
-<%= form_for [@book, @review] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :user %>
-  <%= f.text_field :user %>
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
-  <%= f.label :review_text %>
-  <%= f.text_area :review_text %>
-  <%= f.submit  %>
-<% end %>
+<header>
+  <h1>Add New Review</h1>
+</header>
+<nav>
+  <p>Navigation</p>
+</nav>
+<div class="new-review">
+  <%= form_for [@book, @review] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+    <%= f.label :rating %>
+    <%= f.select :rating, [[1, 1],[2, 2],[3, 3],[4, 4],[5, 5]] %>
+    <%= f.label :review_text %>
+    <%= f.text_area :review_text %>
+    <%= f.submit  %>
+  <% end %>
+</div>
