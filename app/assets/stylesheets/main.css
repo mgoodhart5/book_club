@@ -57,8 +57,16 @@ nav {
   margin: 20px;
 }
 
+.book-info {
+  display: inline-block;
+}
+  
 .book-section h2 {
   font-size: 24px;
+}
+
+.book-show-page {
+  display: inline-block;
 }
 
 .reviews {
@@ -97,6 +105,10 @@ nav {
   padding: 10px;
 }
 
+
+.img-thumbnail {
+  height: 160px;
+}
 .new-review {
   margin: 20px;
   background: #4e4d5c;
