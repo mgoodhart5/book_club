@@ -53,21 +53,21 @@ describe 'as a visitor to the app' do
   end
   it  'should have all book titles be links to the book show page' do
     visit books_path
-    
+
     click_link(@book_1.title)
-    
+
     expect(current_path).to eq(book_path(@book_1))
     expect(page).to have_content(@book_1.title)
   end
-  
+
   it 'should see average book rating next to book title' do
     user = User.create(name: "Steve")
     Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: @book_1)
     Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: @book_1)
     Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: @book_1)
-    
+
     visit books_path
-    
+
     within "#book-#{@book_1.id}" do
       expect(page).to have_content("Average Rating: #{@book_1.average_rating.to_f.round(1)}")
     end
@@ -78,9 +78,9 @@ describe 'as a visitor to the app' do
     Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: @book_1)
     Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: @book_1)
     Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: @book_1)
-    
+
     visit books_path
-    
+
     within "#book-#{@book_1.id}" do
       expect(page).to have_content("Total Number of Reviews: #{@book_1.total_reviews}")
     end
@@ -88,7 +88,7 @@ describe 'as a visitor to the app' do
       expect(page).to have_content("Total Number of Reviews: #{@book_2.total_reviews}")
     end
   end
-  
+
   it "should see an area showing statistics of three highest rated books with title and score" do
     book_1 = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
     book_2 = Book.create(title: "Book 2", pages: 2, publishing_year: 2002)
@@ -98,13 +98,16 @@ describe 'as a visitor to the app' do
     book_2.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here")
     book_3.reviews.create(title: "Review 3", rating: 5, review_text: "Review 3 here")
     book_4.reviews.create(title: "Review 4", rating: 3, review_text: "Review 4 here")
-    
+
     visit books_path
-    
+
     within "#stats-high" do
-      expect(page).to have_content(book_1.title)
-      expect(page).to have_content(book_1.title)
+      expect(page).to have_content(book_3.title)
+      expect(page).to have_content("Average Rating: #{book_3.average_rating}")
+      expect(page).to have_content(book_2.title)
+      expect(page).to have_content("Average Rating: #{book_2.average_rating}")
+      expect(page).to have_content(book_4.title)
+      expect(page).to have_content("Average Rating: #{book_4.average_rating}")
     end
-    
   end
 end
