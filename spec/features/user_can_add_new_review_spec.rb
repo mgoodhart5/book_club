@@ -11,7 +11,7 @@ describe 'When a user visits a book show page' do
     expect(current_path).to eq(new_book_review_path(book))
   end
 
-  it 'can create a new review' do
+  it 'can create a new review rating limited 1-5' do
     book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
     review_title = "Enjoyed it"
     user_name = "Me"
@@ -43,7 +43,7 @@ describe 'When a user visits a book show page' do
     user_name = "me too"
     user_name_titlecase = "Me Too"
     review_text = "Fabulous book loved every minute"
-    rating = '3'
+    rating = 3
 
     visit new_book_review_path(book)
 
