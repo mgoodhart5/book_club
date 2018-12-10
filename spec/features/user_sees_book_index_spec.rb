@@ -69,9 +69,10 @@ describe 'as a visitor to the app' do
     visit books_path
     
     within "#book-#{@book_1.id}" do
-      expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
+      expect(page).to have_content("Average Rating: #{@book_1.average_rating.to_f.round(1)}")
     end
   end
+
   it 'should see total number of reviews next to each book' do
     user = User.create(name: "Steve")
     Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: @book_1)
