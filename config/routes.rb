@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :reviews, shallow: true, only: [:new, :create, :destroy]
   end
 
+  root to: 'welcome#index'
   resources :users, only: [:show]
 
   resources :authors, only: [:show, :destroy]
