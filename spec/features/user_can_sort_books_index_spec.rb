@@ -19,9 +19,9 @@ describe 'When I visit the books index page' do
       click_link "Reviews Ascending"
     end
     
-    expect(all('.books')[0]).to have_content(book_3.title)
-    expect(all('.books')[1]).to have_content(book_2.title)
-    expect(all('.books')[2]).to have_content(book_4.title)
-    expect(all('.books')[3]).to have_content(book_1.title)
+    expect(all('.book-section')[0]).to have_content(book_3.title)
+    expect(all('.book-section')[1]).to have_content(book_2.title)
+    expect(all('.book-section')[2]).to have_content(book_4.title)
+    expect(all('.book-section')[3]).to have_content(book_1.title)
   end
 end

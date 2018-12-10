@@ -23,9 +23,13 @@ RSpec.describe Book, type: :model do
         book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
         user = User.create(name: "Steve")
         book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+        book_1.reviews.create(title: "Review 11", rating: 1, review_text: "Review 1 here", user: user)
         book_2.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+        book_2.reviews.create(title: "Review 22", rating: 5, review_text: "Review 2 here", user: user)
         book_3.reviews.create(title: "Review 3", rating: 5, review_text: "Review 3 here", user: user)
+        book_3.reviews.create(title: "Review 33", rating: 5, review_text: "Review 3 here", user: user)
         book_4.reviews.create(title: "Review 4", rating: 3, review_text: "Review 4 here", user: user)
+        book_4.reviews.create(title: "Review 44", rating: 3, review_text: "Review 4 here", user: user)
         sorted_books = [book_3, book_2, book_4, book_1]
 
         expect(Book.sorted_books_rating).to eq(sorted_books)
