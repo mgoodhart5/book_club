@@ -15,6 +15,6 @@ class Book < ApplicationRecord
   end
 
   def self.sorted_books_rating
-    select books.*,
+    select("books.*, avg(rating) as avg_rating").joins(:reviews).group(:id, :rating).order("rating DESC")
   end
 end
