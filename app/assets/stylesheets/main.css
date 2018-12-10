@@ -1,7 +1,7 @@
 body {
   background: #2d4654;
   color: #d3d3d3;
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'Playfair Display', serif;
 }
 
 header {
@@ -16,6 +16,10 @@ p {
 
 a {
   color: #d3d3d3;
+  text-decoration: none;
+}
+a:hover {
+  color: #87bcde;
 }
 
 h1 {
@@ -30,10 +34,18 @@ h3 {
 
 nav {
   background: #243b4a;
-  height: 40px;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: 30px;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+nav li {
+  float: right;
+  display: inline-block;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  font-size: 150%;
 }
 
 .statistics {
@@ -133,4 +145,28 @@ footer {
   background: #87bcde;
   height: 20px;
   padding: 20px;
+}
+
+.welcome-page {
+  height: calc(100vh - 120px);
+  background-image: url("Shakespeare_and_Company_bookshop (1).jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.welcome-page h1, 
+.welcome-page h2,
+.welcome-page a, 
+.welcome-page a.hover {
+  color: #243b4a;
+  text-shadow: 1px 1px 0 #805e73;
+}
+.welcome-page h1 {
+  font-size: 120px;
+}
+.welcome-page h2 {
+  font-size: 80px;
+}
+.welcome-headers {
+  padding-top: 15%;
 }
