@@ -24,7 +24,7 @@
     <h3>Users With The Most Reviews</h3>
     <% @sorted_users_reviews[0..2].each do |user| %>
       <%= user.name %>
-      <%= user.review_count %>
+      <%= user.reviews.count %>
     <% end %>
   </div>
 </div>
