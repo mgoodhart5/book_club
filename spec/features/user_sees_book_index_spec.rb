@@ -109,6 +109,30 @@ describe 'as a visitor to the app' do
       expect(page).to have_content("Average Rating: #{book_2.average_rating}")
       expect(page).to have_content(book_4.title)
       expect(page).to have_content("Average Rating: #{book_4.average_rating}")
+      expect(page).to_not have_content(book_1.title)
+    end
+  end
+  it "should see an area showing statistics of three lowest rated books with title and score" do
+    book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001)
+    book_2 = Book.create(title: "Book 22", pages: 2, publishing_year: 2002)
+    book_3 = Book.create(title: "Book 33", pages: 3, publishing_year: 2003)
+    book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
+    user = User.create(name: "Steve")
+    book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+    book_2.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+    book_3.reviews.create(title: "Review 3", rating: 5, review_text: "Review 3 here", user: user)
+    book_4.reviews.create(title: "Review 4", rating: 3, review_text: "Review 4 here", user: user)
+
+    visit books_path
+
+    within "#stats-low" do
+      expect(page).to have_content(book_1.title)
+      expect(page).to have_content("Average Rating: #{book_1.average_rating}")
+      expect(page).to have_content(book_2.title)
+      expect(page).to have_content("Average Rating: #{book_2.average_rating}")
+      expect(page).to have_content(book_4.title)
+      expect(page).to have_content("Average Rating: #{book_4.average_rating}")
+      expect(page).to_not have_content(book_3.title)
     end
   end
 end

@@ -13,6 +13,13 @@
         Average Rating: <%= book.average_rating %>
       <% end %>
   </div>
+  <div id="stats-low">
+    <h3>Lowest Rated Books</h3>
+      <% @sorted_books_rating.reverse[0..2].each do |book| %>
+        <%= book.title %>
+        Average Rating: <%= book.average_rating %>
+      <% end %>
+  </div>
 </div>
 <div class="books">
   <% @books.each do |book| %>
