@@ -4,12 +4,33 @@
 
 <div class="statistics">
   <h2>Statistics</h2>
+  <div id="stats-high">
+    <h3>Highest Rated Books</h3>
+      <% @sorted_books_rating[0..2].each do |book| %>
+        <%= book.title %>
+        Average Rating: <%= book.average_rating.to_f.round(1) %>
+      <% end %>
+  </div>
+  <div id="stats-low">
+    <h3>Lowest Rated Books</h3>
+      <% @sorted_books_rating.reverse[0..2].each do |book| %>
+        <%= book.title %>
+        Average Rating: <%= book.average_rating.to_f.round(1) %>
+      <% end %>
+  </div>
+  <div id="stats-users">
+    <h3>Users With The Most Reviews</h3>
+    <% @sorted_users_reviews[0..2].each do |user| %>
+      <%= user.name %>
+      <%= user.reviews.count %>
+    <% end %>
+  </div>
 </div>
 <div class="books">
   <% @books.each do |book| %>
     <div class="book-section" id="book-<%= book.id %>">
       <img class="img-thumbnail" src="<%= book.image_link %>" alt="Cover of <%= book.title %>"/>
-      <div class="book-info">  
+      <div class="book-info">
         <h2><%= link_to book.title, book_path(book) %></h2>
         <p>Average Rating: <%= book.average_rating.to_f.round(1) %></p>
         <p>Total Number of Reviews: <%= book.total_reviews %></p>

@@ -13,7 +13,26 @@ RSpec.describe Book, type: :model do
     it {should have_many(:authors).through(:book_authors)}
     it {should have_many(:reviews)}
   end
-  
+
+  describe 'class methods' do
+    describe '.sorted_books_rating' do
+      it 'should return a list of books sorted by rating' do
+        book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001)
+        book_2 = Book.create(title: "Book 22", pages: 2, publishing_year: 2002)
+        book_3 = Book.create(title: "Book 33", pages: 3, publishing_year: 2003)
+        book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
+        user = User.create(name: "Steve")
+        book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+        book_2.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+        book_3.reviews.create(title: "Review 3", rating: 5, review_text: "Review 3 here", user: user)
+        book_4.reviews.create(title: "Review 4", rating: 3, review_text: "Review 4 here", user: user)
+        sorted_books = [book_3, book_2, book_4, book_1]
+
+        expect(Book.sorted_books_rating).to eq(sorted_books)
+      end
+    end
+  end
+
   describe 'instance methods' do
     describe '#average_rating' do
       it 'should return the average review rating for a book' do
@@ -23,7 +42,7 @@ RSpec.describe Book, type: :model do
         Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: book)
         Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: book)
         average = 3
-        
+
         expect(book.average_rating).to eq(average)
       end
     end
@@ -37,7 +56,7 @@ RSpec.describe Book, type: :model do
         Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: book)
         book_total_reviews = 3
         book_2_total_reviews = 0
-        
+
         expect(book.total_reviews).to eq(book_total_reviews)
         expect(book_2.total_reviews).to eq(book_2_total_reviews)
       end

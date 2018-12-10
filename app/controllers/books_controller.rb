@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
-  
+
   def index
     @books = Book.all
+    @sorted_books_rating = Book.sorted_books_rating
+    @sorted_users_reviews = User.sorted_users_reviews
   end
 
   def show
