@@ -59,4 +59,18 @@ describe 'as a visitor to the app' do
     expect(current_path).to eq(book_path(@book_1))
     expect(page).to have_content(@book_1.title)
   end
+  
+  it 'should see average book rating next to book title' do
+    user = User.create(name: "Steve")
+    review = Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: @book_1)
+    review_2 = Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: @book_1)
+    review_3 = Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: @book_1)
+    
+    visit books_path
+    
+    within "#book-#{@book_1.id}" do
+      expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
+    end
+  end
+  
 end
