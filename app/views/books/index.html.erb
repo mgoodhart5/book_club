@@ -7,7 +7,11 @@
 <div class="statistics">
   <h2>Statistics</h2>
   <div id="stats-high">
-
+    <h3>Highest Rated Books</h3>
+      <% @best_books.each do |book| %>
+        <%= book.title %>
+        Average Rating: <%= book.average_rating %>
+      <% end %>
   </div>
 </div>
 <div class="books">
