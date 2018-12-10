@@ -115,8 +115,14 @@ nav {
   margin-bottom: 20px;
   margin-left: 575px;
   margin-right: 20px;
-
 }
+
+.author-image {
+  height: 300px;
+  margin: 20px;
+  border: 2px solid #87bcde;
+}
+
 .new-review {
   margin: 20px;
   background: #4e4d5c;
