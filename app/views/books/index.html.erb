@@ -20,6 +20,13 @@
         Average Rating: <%= book.average_rating.to_f.round(1) %>
       <% end %>
   </div>
+  <div id="stats-users">
+    <h3>Users With The Most Reviews</h3>
+    <% @sorted_users_reviews[0..2].each do |user| %>
+      <%= user.name %>
+      <%= user.review_count %>
+    <% end %>
+  </div>
 </div>
 <div class="books">
   <% @books.each do |book| %>
