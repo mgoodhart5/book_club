@@ -7,15 +7,17 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= stylesheet_link_tag    'reset', media: 'all' %>
     <%= stylesheet_link_tag    'main', media: 'all' %>
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,700" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Oswald:300,400,600,700" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Playfair+Display:400,700" %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <nav id="navigation">
       <ul>
-        <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Books", books_path %></li>
+        <li><%= link_to "Home", root_path %></li>
       </ul>
     </nav>
     <%= yield %>
