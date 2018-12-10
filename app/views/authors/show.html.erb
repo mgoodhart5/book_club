@@ -1,9 +1,6 @@
 <header>
   <h1><%= @author.name %></h1>
 </header>
-<nav>
-  <p>Navigation</p>
-</nav>
 <div class="books">
   <img class="author-image" src="<%= @author.image_link %>" alt="<%= @author.name %>"/>
   <% @author.books.each do |book| %>
