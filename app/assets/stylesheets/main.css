@@ -53,15 +53,52 @@ nav li {
   background: #4e4d5c;
   padding: 20px;
 }
+
+.statistics-index {
+  vertical-align: bottom;
+  background: #4e4d5c;
+  padding: 20px;
+}
+
+.statistics-index h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.statistics-index li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#sort-bar {
+  background-color: #243b4a;
+  padding: 5px;
+  font-size: 15px;
+}
+
+#sort-bar a {
+  padding-left: 15px;
+  padding-right: 15px;
+  text-transform: uppercase;
+}
+
+#sort-bar h3 {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
 .img-stats-box {
   padding-bottom: 30px;
 }
-#stats-high, 
-#stats-low, 
-#stats-users, 
+
+#stats-high,
+#stats-low,
+#stats-users,
 #stats-average {
   display: inline-block;
+  /* margin: auto; */
   padding: 10px;
+  width: 25%;
 }
 #stats-average {
   vertical-align: top;
@@ -169,8 +206,19 @@ nav li {
 
 footer {
   background: #87bcde;
-  height: 20px;
   padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer a {
+  color: #243b4a;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+footer a:hover {
+  color: #805e73;
 }
 
 .welcome-page {
@@ -180,9 +228,9 @@ footer {
   background-position: center;
   background-size: cover;
 }
-.welcome-page h1, 
+.welcome-page h1,
 .welcome-page h2,
-.welcome-page a, 
+.welcome-page a,
 .welcome-page a.hover {
   color: #243b4a;
   text-shadow: 1px 1px 0 #805e73;
