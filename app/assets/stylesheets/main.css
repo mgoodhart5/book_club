@@ -196,3 +196,10 @@ footer {
 .welcome-headers {
   padding-top: 15%;
 }
+
+.top-review {
+  display: inline-block;
+  margin: 0 20px;
+  padding: 20px 40px;
+  border: 1px solid #87bcde;
+}

@@ -8,4 +8,8 @@ class User < ApplicationRecord
     select("users.*, count(reviews.id) as number_reviews").joins(:reviews).group(:id).order("number_reviews DESC")
   end
 
+  def sort_reviews_chronologically
+    reviews.order(:created_at)
+  end
+
 end

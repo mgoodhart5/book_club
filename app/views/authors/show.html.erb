@@ -12,10 +12,23 @@
       <% book.authors.each do |author| %>
         <% unless author == @author %>
           <h3><%= link_to author.name, author_path(author), class: "link-text" %></h3>
+          <% end %>
         <% end %>
-      <% end %>
-      <p>Pages: <%= book.pages %></p>
-      <p>Published in: <%= book.publishing_year %></p>
+        <p>Pages: <%= book.pages %></p>
+        <p>Published in: <%= book.publishing_year %></p>
+     </div>
+    <% end %>
+      <div class="top-review">
+        <p>Top Review: <br />
+          <% if book.reviews.count > 0 %>
+            <%= book.top_review.title %><br />
+            Rating: <%= book.top_review.rating %><br />
+            Reviewed By: <%= link_to book.top_review.user.name, user_path(book.top_review.user) %>
+          <% else %>
+             This book has no reviews :( 
+          <% end %>
+        </p>
+      </div>
     </div>
   <% end %>
 </div>

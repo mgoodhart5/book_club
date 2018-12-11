@@ -35,4 +35,18 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe '.sort_reviews_chronologically' do
+    it 'should return a list of reviews chronologically' do
+      user = User.create(name: "Steve")
+      book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
+      book_1 = Book.create(title: "Book 2", pages: 1, publishing_year: 2001)
+      book_2 = Book.create(title: "Book 3", pages: 1, publishing_year: 2001)
+      review_1 = Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: book, created_at: "2018-11-09 22:44:45")
+      review_2 = Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: book_1, created_at: "2018-12-09 22:44:45")
+      review_3 = Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: book_2, created_at: "2018-08-09 22:44:45")
+      sorted_reviews = [review_3, review_1, review_2]
+
+      expect(user.sort_reviews_chronologically).to eq(sorted_reviews)
+    end
+  end
 end

@@ -14,11 +14,12 @@ class Book < ApplicationRecord
     reviews.count
   end
   
-  
-  
-  
   def reviews_by_rating
     reviews.order(rating: :asc)
+  end
+  
+  def top_review
+    reviews.order(:rating).last
   end
 
   def self.sorted_books_rating
