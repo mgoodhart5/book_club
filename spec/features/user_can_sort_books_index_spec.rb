@@ -64,4 +64,21 @@ describe 'When I visit the books index page' do
     expect(all('.book-section')[2]).to have_content(book_1.title)
     expect(all('.book-section')[3]).to have_content(book_3.title)
   end
+  it 'should be able to sort books by page number in descending order' do
+    book_1 = Book.create(title: "Book 11", pages: 10, publishing_year: 2001)
+    book_2 = Book.create(title: "Book 22", pages: 2, publishing_year: 2002)
+    book_3 = Book.create(title: "Book 33", pages: 22, publishing_year: 2003)
+    book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
+    
+    visit books_path
+    
+    within "#sort-bar" do
+      click_link "Pages Descending"
+    end
+    
+    expect(all('.book-section')[0]).to have_content(book_3.title)
+    expect(all('.book-section')[1]).to have_content(book_1.title)
+    expect(all('.book-section')[2]).to have_content(book_4.title)
+    expect(all('.book-section')[3]).to have_content(book_2.title)
+  end
 end
