@@ -11,6 +11,8 @@ class BooksController < ApplicationController
       @books = Book.sorted_by_pages.reverse
     elsif params[:reviews] == 'asc'
       @books = Book.sorted_by_review_amount
+    elsif params[:reviews] == 'desc'
+      @books = Book.sorted_by_review_amount.reverse
     else
       @books = Book.all
     end
