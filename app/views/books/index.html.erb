@@ -2,32 +2,39 @@
   <h1>All Books</h1>
 </header>
 
-<div class="statistics">
+<div class="statistics-index">
   <h2>Statistics</h2>
   <div id="stats-high">
     <h3>Highest Rated Books</h3>
       <% @sorted_books_rating.reverse[0..2].each do |book| %>
-        <%= book.title %>
-        Average Rating: <%= book.average_rating.to_f.round(1) %>
+      <ul>
+        <li><%= link_to book.title, book_path(book) %></li>
+        <li>Average Rating: <%= book.average_rating.to_f.round(1) %></li>
       <% end %>
+      </ul>
   </div>
   <div id="stats-low">
     <h3>Lowest Rated Books</h3>
       <% @sorted_books_rating[0..2].each do |book| %>
-        <%= book.title %>
-        Average Rating: <%= book.average_rating.to_f.round(1) %>
+        <ul>
+          <li><%= link_to book.title, book_path(book) %></li>
+          <li>Average Rating: <%= book.average_rating.to_f.round(1) %></li>
+        </ul>
       <% end %>
   </div>
   <div id="stats-users">
     <h3>Users With The Most Reviews</h3>
     <% @sorted_users_reviews[0..2].each do |user| %>
-      <%= user.name %>
-      <%= user.reviews.count %>
+    <ul>
+      <li><%= link_to user.name, user_path(user) %></li>
+      <li><%= user.reviews.count %></li>
     <% end %>
+    </ul>
   </div>
 </div>
 
 <div id="sort-bar">
+  <h3>Sort By:</h3>
   <%= link_to "Reviews Ascending", books_path(sort: 'rating-asc') %>
   <%= link_to "Reviews Descending", books_path(sort: 'rating-desc') %>
   <%= link_to "Pages Ascending", books_path(sort: 'pages-asc') %>
