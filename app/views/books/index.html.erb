@@ -28,12 +28,12 @@
 </div>
 
 <div id="sort-bar">
-  <%= link_to "Reviews Ascending", books_path(rating: 'asc') %>
-  <%= link_to "Reviews Descending", books_path(rating: 'desc') %>
-  <%= link_to "Pages Ascending", books_path(pages: 'asc') %>
-  <%= link_to "Pages Descending", books_path(pages: 'desc') %>
-  <%= link_to "Number of Reviews Ascending", books_path(reviews: 'asc') %>
-  <%= link_to "Number of Reviews Descending", books_path(reviews: 'desc') %>
+  <%= link_to "Reviews Ascending", books_path(sort: 'rating-asc') %>
+  <%= link_to "Reviews Descending", books_path(sort: 'rating-desc') %>
+  <%= link_to "Pages Ascending", books_path(sort: 'pages-asc') %>
+  <%= link_to "Pages Descending", books_path(sort: 'pages-desc') %>
+  <%= link_to "Number of Reviews Ascending", books_path(sort: 'reviews-asc') %>
+  <%= link_to "Number of Reviews Descending", books_path(sort: 'reviews-desc') %>
 </div>
 
 <div class="books">

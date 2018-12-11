@@ -1,24 +1,13 @@
 class BooksController < ApplicationController
 
   def index
-    if params[:rating] == 'asc'
-      @books = Book.sorted_books_rating
-    elsif params[:rating] == 'desc'
-      @books = Book.sorted_books_rating.reverse
-    elsif params[:pages] == 'asc'
-      @books = Book.sorted_by_pages
-    elsif params[:pages] == 'desc'
-      @books = Book.sorted_by_pages.reverse
-    elsif params[:reviews] == 'asc'
-      @books = Book.sorted_by_review_amount
-    elsif params[:reviews] == 'desc'
-      @books = Book.sorted_by_review_amount.reverse
+    if params[:sort]
+      @books = Book.sort_by(params[:sort])
     else
       @books = Book.all
     end
     @sorted_books_rating = Book.sorted_books_rating
     @sorted_users_reviews = User.sorted_users_reviews
-    
   end
 
   def show
@@ -34,12 +23,7 @@ class BooksController < ApplicationController
     split_authors = author_params[:name].split(",")
     multiple_authors = []
     split_authors.each do |author|
-      new_author = Author.new(name: author.strip)
-      if new_author.save
-        multiple_authors << new_author
-      else
-        multiple_authors << Author.find_by(name: author_params[:name])
-      end
+      multiple_authors << Author.find_or_create_by(name: author.strip)
     end
     book = Book.new(book_params)
     if book.save
