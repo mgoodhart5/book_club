@@ -7,7 +7,7 @@ describe 'when a user clicks on a users name for any book review' do
     review = Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: book)
 
     visit book_path(book)
-    within ".book-section" do
+    within ".reviews" do
       click_link "#{user.name}"
     end
 

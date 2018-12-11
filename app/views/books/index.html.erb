@@ -38,17 +38,19 @@
 
 <div class="books">
   <% @books.each do |book| %>
-    <div class="book-section" id="book-<%= book.id %>">
+    <div class="book-section index" id="book-<%= book.id %>">
       <img class="img-thumbnail" src="<%= book.image_link %>" alt="Cover of <%= book.title %>"/>
       <div class="book-info">
         <h2><%= link_to book.title, book_path(book) %></h2>
-        <p>Average Rating: <%= book.average_rating.to_f.round(1) %></p>
-        <p>Total Number of Reviews: <%= book.total_reviews %></p>
         <% book.authors.each do |author| %>
           <h3><%= link_to author.name, author_path(author) %></h3>
         <% end %>
         <p>Pages: <%= book.pages %></p>
         <p>Published in: <%= book.publishing_year %></p>
+      </div>
+      <div class="book-stats">
+        <p>Average Rating: <%= book.average_rating.to_f.round(1) %></p>
+        <p>Total Number of Reviews: <%= book.total_reviews %></p>
       </div>
     </div>
   <% end %>

@@ -1,32 +1,40 @@
 <header>
   <h1><%= @book.title %></h1>
 </header>
-<div class="statistics">
-  <h2>Statistics</h2>
-  <div id="stats-high">
-    <h3>Top Reviews:</h3>
-    <% @reviews_by_rating.reverse[0..2].each do |review| %>
-      <%= review.title %>
-      Rating: <%= review.rating %>
-      Reviewed By: <%= link_to review.user.name, user_path(review.user) %>
-    <% end %>
-  </div>
-  <div id="stats-low">
-    <h3>Bottom Reviews:</h3>
-      <% @reviews_by_rating[0..2].each do |review| %>
-        <%= review.title %>
-        Rating: <%= review.rating %>
-        Reviewed By: <%= link_to review.user.name, user_path(review.user) %>
-      <% end %>
-  </div>
-  <div id="stats-average">
-    <h3>Average Review Rating:</h3>
-    <%= @book.average_rating %>
-  </div>
-</div>
+
 <div class="book-section">
+  <div class="img-stats-box">
+    
     <img class="book-image" src="<%= @book.image_link %>" alt="Cover of <%= @book.title %>"/>
-  <div class="book-info">
+    <div class="statistics">
+      <h3>STATISTICS</h3>
+      <div id="stats-high">
+        <h3>Top Reviews:</h3>
+        <% @reviews_by_rating.reverse[0..2].each do |review| %>
+          <ul class="review-list">
+          <li><%= review.title %></li>
+          <li>Rating: <%= review.rating %></li>
+          <li>Reviewed By: <%= link_to review.user.name, user_path(review.user) %></li>
+        </ul>
+        <% end %>
+      </div>
+      <div id="stats-low">
+        <h3>Bottom Reviews:</h3>
+          <% @reviews_by_rating[0..2].each do |review| %>
+          <ul class="review-list">
+          <li><%= review.title %></li>
+          <li>Rating: <%= review.rating %></li>
+          <li>Reviewed By: <%= link_to review.user.name, user_path(review.user) %></li>
+        </ul>
+          <% end %>
+      </div>
+      <div id="stats-average">
+        <h3>Average Review Rating:</h3>
+        <%= @book.average_rating.to_f.round(1) %>
+      </div>
+    </div>
+  </div>
+  <div class="book-specific-info">
     <% @book.authors.each do |author| %>
       <h2><%= link_to author.name, author_path(author), class: "link-text" %></h2>
     <% end %>

@@ -4,7 +4,7 @@
 <div class="books">
   <img class="author-image" src="<%= @author.image_link %>" alt="<%= @author.name %>"/>
   <% @author.books.each do |book| %>
-    <div class="book-section" id="book-<%= book.id %>">
+    <div class="book-section index" id="book-<%= book.id %>">
       <h2><%= link_to book.title, book_path(book), class: "link-text" %></h2>
       <% if book.authors.count > 1 %>
         <p>Other Authors:</p>
