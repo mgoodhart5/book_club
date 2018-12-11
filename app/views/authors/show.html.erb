@@ -16,6 +16,15 @@
       <% end %>
       <p>Pages: <%= book.pages %></p>
       <p>Published in: <%= book.publishing_year %></p>
+      <p>Top Review: <br />
+        <% if book.reviews.count > 0 %>
+          <%= book.top_review.title %><br />
+          Rating: <%= book.top_review.rating %><br />
+          Reviewed By: <%= book.top_review.user.name %>
+        <% else %>
+           This book has no reviews :(
+        <% end %>
+      </p>
     </div>
   <% end %>
 </div>
