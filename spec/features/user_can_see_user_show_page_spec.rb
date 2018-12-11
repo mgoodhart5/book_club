@@ -7,8 +7,9 @@ describe 'when a user clicks on a users name for any book review' do
     review = Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: book)
 
     visit book_path(book)
-
-    click_link "#{user.name}"
+    within ".book-section" do
+      click_link "#{user.name}"
+    end
 
     expect(page).to have_content(review.title)
     expect(current_path).to eq(user_path(user))

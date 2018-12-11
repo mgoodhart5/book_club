@@ -57,7 +57,7 @@ describe 'As a visitor to the book show page' do
     
     visit book_path(book_1)
     
-    within "#statistics" do
+    within "#stats-high" do
       expect(page).to have_content(review_4.title)
       expect(page).to have_content("Rating: #{review_4.rating}")
       expect(page).to have_content("Reviewed By: #{review_4.user.name}")
