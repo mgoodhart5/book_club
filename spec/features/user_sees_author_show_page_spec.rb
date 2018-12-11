@@ -46,5 +46,28 @@ describe 'When a user visits an author show page' do
     expect(current_path).to eq(book_path(book))
     expect(page).to have_content(book.title)
   end
-  
+  it 'should show top review next to each book' do
+    author = Author.create(name: "Author One")
+    book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001, author: author)
+    book_2 = Book.create(title: "Book 22", pages: 2, publishing_year: 2002)
+    user_1 = User.create(name: "Steve")
+    user_2 = User.create(name: "Bob")
+    review_1 = book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user_1)
+    review_2 = book_2.reviews.create(title: "Review 2", rating: 1, review_text: "Review 1 here", user: user_1)
+    review_3 = book_2.reviews.create(title: "Review 3", rating: 4, review_text: "Review 2 here", user: user_2)
+    review_4 = book_2.reviews.create(title: "Review 44", rating: 5, review_text: "Review 2 here", user: user_2)
+    
+    visit author_path(author)
+    
+    within "book-#{book_1.id}" do
+      expect(page).to have_content(review_1.title)
+      expect(page).to have_content("Rating: #{review_1.rating}")
+      expect(page).to have_content("By: #{review_1.user.name}")
+    end
+    within "book-#{book_2.id}" do
+      expect(page).to have_content(review_4.title)
+      expect(page).to have_content("Rating: #{review_4.rating}")
+      expect(page).to have_content("By: #{review_4.user.name}")
+    end
+  end
 end
