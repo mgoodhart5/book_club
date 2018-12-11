@@ -5,17 +5,30 @@
   <img class="author-image" src="<%= @author.image_link %>" alt="<%= @author.name %>"/>
   <% @author.books.each do |book| %>
     <div class="book-section" id="book-<%= book.id %>">
-      <h2><%= link_to book.title, book_path(book), class: "link-text" %></h2>
-      <% if book.authors.count > 1 %>
-        <p>Other Authors:</p>
-      <% end %>
-      <% book.authors.each do |author| %>
-        <% unless author == @author %>
-          <h3><%= link_to author.name, author_path(author), class: "link-text" %></h3>
+      <div class="book-info">
+        <h2><%= link_to book.title, book_path(book), class: "link-text" %></h2>
+        <% if book.authors.count > 1 %>
+          <p>Other Authors:</p>
         <% end %>
-      <% end %>
-      <p>Pages: <%= book.pages %></p>
-      <p>Published in: <%= book.publishing_year %></p>
+        <% book.authors.each do |author| %>
+          <% unless author == @author %>
+            <h3><%= link_to author.name, author_path(author), class: "link-text" %></h3>
+          <% end %>
+        <% end %>
+        <p>Pages: <%= book.pages %></p>
+        <p>Published in: <%= book.publishing_year %></p>
+    </div>
+      <div class="top-review">
+        <p>Top Review: <br />
+          <% if book.reviews.count > 0 %>
+            <%= book.top_review.title %><br />
+            Rating: <%= book.top_review.rating %><br />
+            Reviewed By: <%= link_to book.top_review.user.name, user_path(book.top_review.user) %>
+          <% else %>
+             This book has no reviews :( 
+          <% end %>
+        </p>
+      </div>
     </div>
   <% end %>
 </div>
