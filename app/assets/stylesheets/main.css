@@ -6,7 +6,6 @@ body {
 
 header {
   background: #805e73;
-  height: 100px;
   padding: 20px;
 }
 
@@ -23,7 +22,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 60px;
   font-weight: bold;
 }
 
@@ -49,11 +48,27 @@ nav li {
 }
 
 .statistics {
+  display: inline-block;
+  vertical-align: bottom;
   background: #4e4d5c;
   padding: 20px;
-  margin-bottom: 80px;
 }
-
+.img-stats-box {
+  padding-bottom: 30px;
+}
+#stats-high, 
+#stats-low, 
+#stats-users, 
+#stats-average {
+  display: inline-block;
+  padding: 10px;
+}
+#stats-average {
+  vertical-align: top;
+}
+.review-list {
+  padding: 10px;
+}
 
 .books h2 {
   font-size: 30px;
@@ -67,19 +82,33 @@ nav li {
   padding: 20px;
   margin: 20px;
 }
-
+.book-section p {
+  font-size: 20px;
+}
 .book-info {
   display: inline-block;
+  vertical-align: top;
+}
+.index p {
+  font-size: 100%;
+}
+.book-section h2 {
+  font-size: 50px;
 }
 
-.book-section h2 {
-  font-size: 24px;
+.index h2 {
+  font-size: 25px;
 }
 
 .book-show-page {
   display: inline-block;
 }
-
+.book-stats {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 20px;
+  padding-top: 44px;
+}
 .reviews {
   border: 1px solid #4e4d5c;
   margin: 30px;
@@ -118,14 +147,12 @@ nav li {
 
 .img-thumbnail {
   height: 160px;
+  padding-right: 30px;
 }
 
 .book-image {
-  height: 300px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 575px;
-  margin-right: 20px;
+  height: 350px;
+  padding-right: 50px;
 }
 
 .author-image {

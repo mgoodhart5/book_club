@@ -96,13 +96,27 @@ RSpec.describe Book, type: :model do
         expect(book_2.total_reviews).to eq(book_2_total_reviews)
       end
     end
+    
+    describe '#reviews_by_rating' do
+      it 'should return a books reviews sorted by rating' do
+        book = Book.new(title: "Book 1", pages: 234, publishing_year: 2002)
+        user = User.create(name: "Steve")
+        review_1 = Review.create(title: "Hated it", rating: 2, review_text: "Would never read again.", user: user, book: book)
+        review_2 = Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: book)
+        review_3 = Review.create(title: "Genius", rating: 3, review_text: "Loved it!.", user: user, book: book)
+        sorted_reviews = [review_1, review_3, review_2]
+        
+        expect(book.reviews_by_rating).to eq(sorted_reviews)
+      end
+    end
+    
     describe '#top_review' do
       it 'should return the top review for a book' do
         book = Book.new(title: "Book 1", pages: 234, publishing_year: 2002)
         user = User.create(name: "Steve")
         review_1 = Review.create(title: "Hated it", rating: 2, review_text: "Would never read again.", user: user, book: book)
         review_2 = Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: book)
-        review_3 = Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: book)
+        review_3 = Review.create(title: "Genius", rating: 3, review_text: "Loved it!.", user: user, book: book)
         top_review = review_2
         
         expect(book.top_review).to eq(top_review)

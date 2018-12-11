@@ -46,4 +46,66 @@ describe 'As a visitor to the book show page' do
     expect(current_path).to eq(author_path(@author_1))
     expect(page).to have_content(@book_1.title)
   end
+  
+  it 'should see statistics with top three reviews for the book' do
+    book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001)
+    user = User.create(name: "Steve")
+    review_1 = book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+    review_2 = book_1.reviews.create(title: "Review 11", rating: 1, review_text: "Review 1 here", user: user)
+    review_3 = book_1.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+    review_4 = book_1.reviews.create(title: "Review 22", rating: 5, review_text: "Review 2 here", user: user)
+    
+    visit book_path(book_1)
+    
+    within "#stats-high" do
+      expect(page).to have_content(review_4.title)
+      expect(page).to have_content("Rating: #{review_4.rating}")
+      expect(page).to have_content("Reviewed By: #{review_4.user.name}")
+      expect(page).to have_content(review_3.title)
+      expect(page).to have_content("Rating: #{review_3.rating}")
+      expect(page).to have_content("Reviewed By: #{review_3.user.name}")
+      expect(page).to have_content(review_1.title)
+      expect(page).to have_content("Rating: #{review_1.rating}")
+      expect(page).to have_content("Reviewed By: #{review_1.user.name}")
+      expect(page).to_not have_content(review_2.title)
+    end
+  end
+  it 'should see statistics with bottom three reviews for the book' do
+    book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001)
+    user = User.create(name: "Steve")
+    review_1 = book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+    review_2 = book_1.reviews.create(title: "Review 11", rating: 1, review_text: "Review 1 here", user: user)
+    review_3 = book_1.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+    review_4 = book_1.reviews.create(title: "Review 22", rating: 5, review_text: "Review 2 here", user: user)
+    
+    visit book_path(book_1)
+    
+    within "#stats-low" do
+      expect(page).to have_content(review_2.title)
+      expect(page).to have_content("Rating: #{review_2.rating}")
+      expect(page).to have_content("Reviewed By: #{review_2.user.name}")
+      expect(page).to have_content(review_3.title)
+      expect(page).to have_content("Rating: #{review_3.rating}")
+      expect(page).to have_content("Reviewed By: #{review_3.user.name}")
+      expect(page).to have_content(review_1.title)
+      expect(page).to have_content("Rating: #{review_1.rating}")
+      expect(page).to have_content("Reviewed By: #{review_1.user.name}")
+      expect(page).to_not have_content(review_4.title)
+    end
+  end
+  it 'should see statistics with average rating for the book' do
+    book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001)
+    user = User.create(name: "Steve")
+    book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+    book_1.reviews.create(title: "Review 11", rating: 1, review_text: "Review 1 here", user: user)
+    book_1.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+    book_1.reviews.create(title: "Review 22", rating: 5, review_text: "Review 2 here", user: user)
+    
+    visit book_path(book_1)
+    
+    within "#stats-average" do
+      expect(page).to have_content(book_1.average_rating)
+    end
+    
+  end
 end
