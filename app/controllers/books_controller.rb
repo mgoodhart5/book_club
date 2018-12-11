@@ -1,9 +1,24 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    if params[:rating] == 'asc'
+      @books = Book.sorted_books_rating
+    elsif params[:rating] == 'desc'
+      @books = Book.sorted_books_rating.reverse
+    elsif params[:pages] == 'asc'
+      @books = Book.sorted_by_pages
+    elsif params[:pages] == 'desc'
+      @books = Book.sorted_by_pages.reverse
+    elsif params[:reviews] == 'asc'
+      @books = Book.sorted_by_review_amount
+    elsif params[:reviews] == 'desc'
+      @books = Book.sorted_by_review_amount.reverse
+    else
+      @books = Book.all
+    end
     @sorted_books_rating = Book.sorted_books_rating
     @sorted_users_reviews = User.sorted_users_reviews
+    
   end
 
   def show

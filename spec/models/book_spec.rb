@@ -23,12 +23,47 @@ RSpec.describe Book, type: :model do
         book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
         user = User.create(name: "Steve")
         book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+        book_1.reviews.create(title: "Review 11", rating: 1, review_text: "Review 1 here", user: user)
         book_2.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+        book_2.reviews.create(title: "Review 22", rating: 5, review_text: "Review 2 here", user: user)
         book_3.reviews.create(title: "Review 3", rating: 5, review_text: "Review 3 here", user: user)
+        book_3.reviews.create(title: "Review 33", rating: 5, review_text: "Review 3 here", user: user)
         book_4.reviews.create(title: "Review 4", rating: 3, review_text: "Review 4 here", user: user)
-        sorted_books = [book_3, book_2, book_4, book_1]
+        book_4.reviews.create(title: "Review 44", rating: 3, review_text: "Review 4 here", user: user)
+        sorted_books = [book_1, book_4, book_2, book_3]
 
         expect(Book.sorted_books_rating).to eq(sorted_books)
+      end
+    end
+    describe '.sorted_by_pages' do
+      it 'should return a list of books sorted by pages' do
+        book_1 = Book.create(title: "Book 11", pages: 10, publishing_year: 2001)
+        book_2 = Book.create(title: "Book 22", pages: 2, publishing_year: 2002)
+        book_3 = Book.create(title: "Book 33", pages: 22, publishing_year: 2003)
+        book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
+        sorted_books = [book_2, book_4, book_1, book_3]
+        
+        expect(Book.sorted_by_pages).to eq(sorted_books)
+      end
+    end
+    describe '.sorted_by_review_amount' do
+      it 'should return a list of books sorted by number of reviews' do
+        book_1 = Book.create(title: "Book 11", pages: 1, publishing_year: 2001)
+        book_2 = Book.create(title: "Book 22", pages: 2, publishing_year: 2002)
+        book_3 = Book.create(title: "Book 33", pages: 3, publishing_year: 2003)
+        book_4 = Book.create(title: "Book 44", pages: 4, publishing_year: 2004)
+        user = User.create(name: "Steve")
+        book_1.reviews.create(title: "Review 1", rating: 2, review_text: "Review 1 here", user: user)
+        book_2.reviews.create(title: "Review 11", rating: 1, review_text: "Review 1 here", user: user)
+        book_2.reviews.create(title: "Review 2", rating: 4, review_text: "Review 2 here", user: user)
+        book_2.reviews.create(title: "Review 22", rating: 5, review_text: "Review 2 here", user: user)
+        book_3.reviews.create(title: "Review 3", rating: 5, review_text: "Review 3 here", user: user)
+        book_3.reviews.create(title: "Review 33", rating: 5, review_text: "Review 3 here", user: user)
+        book_3.reviews.create(title: "Review 4", rating: 3, review_text: "Review 4 here", user: user)
+        book_3.reviews.create(title: "Review 44", rating: 3, review_text: "Review 4 here", user: user)
+        sorted_books = [book_4, book_1, book_2, book_3]
+        
+        expect(Book.sorted_by_review_amount).to eq(sorted_books)
       end
     end
   end
