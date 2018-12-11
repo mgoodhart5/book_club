@@ -24,7 +24,8 @@ class Book < ApplicationRecord
   
   def self.sorted_by_review_amount
     select("books.*, count(reviews.id) as review_count")
-    .joins("LEFT JOIN reviews ON books.id = reviews.book_id")
-    .group(:id).order("review_count ASC")
+    .left_joins(:reviews)
+    .group(:id)
+    .order("review_count ASC")
   end
 end
