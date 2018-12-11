@@ -68,4 +68,23 @@ describe 'when a user visits a user show page' do
     expect(all('.single-review-section')[1]).to have_content(review_1.title)
     expect(all('.single-review-section')[2]).to have_content(review_2.title)
   end
+  it 'should be able to click on a link and sort the reviews oldest to newest' do
+    user = User.create(name: "Steve")
+    book = Book.create(title: "Book 1", pages: 1, publishing_year: 2001)
+    book_1 = Book.create(title: "Book 2", pages: 1, publishing_year: 2001)
+    book_2 = Book.create(title: "Book 3", pages: 1, publishing_year: 2001)
+    review_1 = Review.create(title: "Hated it", rating: 1, review_text: "Would never read again.", user: user, book: book, created_at: "2018-11-09 22:44:45")
+    review_2 = Review.create(title: "Fine", rating: 5, review_text: "It's okay.", user: user, book: book_1, created_at: "2018-12-09 22:44:45")
+    review_3 = Review.create(title: "Genius", rating: 2, review_text: "Loved it!.", user: user, book: book_2, created_at: "2018-08-09 22:44:45")
+
+    visit user_path(user)
+
+    within "#sort-bar" do
+      click_link "Descending Chronological Order"
+    end
+
+    expect(all('.single-review-section')[0]).to have_content(review_2.title)
+    expect(all('.single-review-section')[1]).to have_content(review_1.title)
+    expect(all('.single-review-section')[2]).to have_content(review_3.title)
+  end
 end
