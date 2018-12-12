@@ -35,9 +35,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    book_authors = BookAuthor.where(book_id: params[:id])
-    BookAuthor.delete(book_authors)
-    Book.delete(params[:id])
+    Book.destroy(params[:id])
     redirect_to books_path
   end
 
