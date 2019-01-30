@@ -91,7 +91,7 @@ We used `rspec`, `capybara`, and `shoulda-matchers` for testing.
 ![user view](/.readme/view.jpg)
 
 ## ActiveRecord Queries and Statistics
-We worked with relational databases and queries with many to many relationships.
+We worked with a relational database and queries with many to many relationships.
 
 ##### Our Schema
 
